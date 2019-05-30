@@ -87,7 +87,7 @@ public class HomeController {
 				.orElseThrow(() -> 
 				new ResourceNotFoundException("not found " + userId ));
 		model.addAttribute("user", user);
-		return "user";
+		return "info";
 	}	
 	@GetMapping("/register-form")
 	public String loadRegForm(Model model) {		
@@ -110,7 +110,7 @@ public class HomeController {
 		user.setCompany(userDetails.getCompany());
 		User userUpdate = userRepo.save(user); // 객체 삭제 -> jpa : record 삭제로 적용
 		//model.addAttribute("user", userUpdate);
-		return "redirect:/users"; // 업데이트가 성공하면 users 자원을 get 방식으로 접근하되 model에 user 어트리뷰트를 전달한다.
+		return "info"; // 업데이트가 성공하면 users 자원을 get 방식으로 접근하되 model에 user 어트리뷰트를 전달한다.
 		//return ResponseEntity.ok(userUpdate);
 	}
 	@DeleteMapping("/users/{id}") 
